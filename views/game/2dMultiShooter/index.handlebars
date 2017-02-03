@@ -1,0 +1,22 @@
+       <div id="signDiv">
+        Username: <input type="text" id="signDiv-username"> <br /> Password: <input type="text" id="signDiv-password"> <br
+        />
+        <button id="signdiv-signIn">SignIn</button>
+        <button id="signdiv-signUp">SignUp</button>
+    </div>
+
+    <div id="gameDiv" style="display:none;">
+<canvas id="ctx" width="500" , height="500" , style="position: absolute; left:8px; top:8px; border:1px solid #000000;"></canvas>
+<canvas id="ctx-ui" width="500" , height="500" , style="position: absolute; left:8px; top:8px; border:1px solid #000000;"></canvas>
+
+<div id="chat-text" style="width:500px; margin-top:500px; height:100px; overflow-y:scroll">
+
+</div>
+
+<form action="" id="chat-form">
+    <input type="text" id="chat-input" style="width:500px" />
+</form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
+<script src="/public/js/game.js"></script>
