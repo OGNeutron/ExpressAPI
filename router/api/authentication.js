@@ -37,9 +37,14 @@ router.route('/sign_in').post((req, res) => {
         Users.find({ $or: [{ 'username': req.body.username }, { 'email': req.body.email }] }, (err, result) => {
             if (err) {
                 res.status(400).json(err);
+            } else if (result.length == 0){
+                res.status(400).json({
+                    response: 'Invalid Username'
+                })
             } else {
                 if (req.body.password != undefined) {
                     let isVarified = bcrypt.compareSync(req.body.password, result[0].password);
+                    console.log(isVarified);
                     if (isVarified) {
                         console.log(result._id)
                         let response = {
@@ -85,6 +90,17 @@ router.use((req, res, next) => {
     })
 })
 
+//GET USER
+router.route('/user/:username').get((req, res) => {
+    Users.findOne({username: req.params.username}, (err, result) => {
+        if(err){
+            res.status(404).json(err);
+        } else {
+            res.status(200).json(result);
+        }
+    })
+})
+
 //EDIT USER
 router.route('/users/:id').put((req, res) => {
     let user = req.body;
@@ -101,8 +117,8 @@ router.route('/users/:id').put((req, res) => {
             "Error": "bad data"
         })
     } else {
-        Users.update({_id: req._id}, newUser, (err, response) => {
-            if(err){
+        Users.update({ _id: req._id }, newUser, (err, response) => {
+            if (err) {
                 res.status(404).json(err)
             } else {
                 res.status(201).json(response);

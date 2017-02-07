@@ -18,6 +18,8 @@ const jwt = require('jsonwebtoken');
 const adminPages = require('./router/admin_pages');
 const api = require('./router/api/authentication');
 const vue = require('./router/api/VueAPI/VueAPI');
+const blog = require('./router/api/ReactBlog/index');
+const mysqlBlog = require('./router/api/MysqlAPI/ReactBlog/index');
 
 const app = express();
 
@@ -51,8 +53,11 @@ app.use(cookieParser());
 app.get('/mps', (req, res) => res.status(200).render('game/2dMultiShooter/index'));
 app.get('/minesweeper', (req, res) => res.status(200).render('game/minesweeper/index'));
 app.use('/', adminPages);
-app.use('/api/', api);
+app.use('/api', api);
+app.use('/blog', blog);
 app.use('/vue', vue); 
+app.use('/mysql', mysqlBlog)
+
 
 server.listen(port, () => {
     console.log(`Listening to port ${port}`);
