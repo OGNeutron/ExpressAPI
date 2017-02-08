@@ -1,17 +1,24 @@
+const constants = require('../../../../constants');
+contants.setupGlobals();
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt-nodejs');
 
-// let connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '0605198922071958@Chelseafc',
-//     database: 'react_mysql'
-// })
+const host = process.env.MYSQLHOST ||'localhost';
+const user = process.env.MYSQLUSER || 'root';
+const password = process.env.MYSQLPASSWORD || '0605198922071958@Chelseafc';
+const database = process.env.MYSQLDATABASE || "react_mysql";
 
-// connection.connect();
+let connection = mysql.createConnection({
+    host: host,
+    user: user,
+    password: password,
+    database: database
+})
+
+connection.connect();
 
 router.route('/signup').post((req, res) => {
     let username = req.body.username;
