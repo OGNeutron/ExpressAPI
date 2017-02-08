@@ -8,15 +8,15 @@ const bcrypt = require('bcrypt-nodejs');
 
 const host = process.env.MYSQLHOST || 'localhost';
 const user = process.env.MYSQLUSER || 'root';
-const password = process.env.MYSQLPASSWORD || '0605198922071958@Chelseafc';
+const password = process.env.MYSQLPASSWORD;
 const database = process.env.MYSQLDATABSE || "react_mysql";
 const port = process.env.MYSQLPORT || 3307;
 
 let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '0605198922071958@Chelseafc',
-    database: "react_mysql",
+    host: host,
+    user: user,
+    password: password,
+    database: port,
 })
 
 connection.connect();
@@ -240,6 +240,14 @@ router.route('/comment').get((req, res) => {
             })
         }
     })
+})
+
+router.route('/reply').post((req, res) => {
+
+})
+
+router.route('/rate').post((req, res) => {
+
 })
 
 module.exports = router;
