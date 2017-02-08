@@ -6,17 +6,17 @@ const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt-nodejs');
 
-const host = process.env.MYSQLHOST ||'localhost';
+const host = process.env.MYSQLHOST || 'localhost';
 const user = process.env.MYSQLUSER || 'root';
 const password = process.env.MYSQLPASSWORD || '0605198922071958@Chelseafc';
 const database = process.env.MYSQLDATABASE || "react_mysql";
 const port = process.env.MYSQLPORT || 3307;
 
 let connection = mysql.createConnection({
-    host: "us-cdbr-iron-east-04.cleardb.net",
-    user: "b8b3fa538c3fdb",
-    password: "259ac16c",
-    database: "heroku_ddf5f57e722347d",
+    host: host,
+    user: user,
+    password: password,
+    database: database,
 })
 
 connection.connect();
