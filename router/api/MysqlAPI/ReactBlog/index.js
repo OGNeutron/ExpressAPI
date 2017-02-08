@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt-nodejs');
 const host = process.env.MYSQLHOST || 'localhost';
 const user = process.env.MYSQLUSER || 'root';
 const password = process.env.MYSQLPASSWORD || '0605198922071958@Chelseafc';
-const database = process.env.MYSQLDATABASE || "react_mysql";
+const database = process.env.MYSQLDATABSE || "react_mysql";
 const port = process.env.MYSQLPORT || 3307;
 
 let connection = mysql.createConnection({
