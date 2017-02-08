@@ -6,5 +6,5 @@ module.exports.setupGlobals = () => {
     process.env.MYSQLDATABSE = "heroku_ddf5f57e722347d";
     process.env.MYSQLPASSWORD = "259ac16c";
     process.env.MYSQLUSER = "b8b3fa538c3fdb";
-    process.env.MYSQLPORT = 5432
+    // process.env.MYSQLPORT = 5432
 }

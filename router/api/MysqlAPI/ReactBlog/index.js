@@ -10,13 +10,13 @@ const host = process.env.MYSQLHOST || 'localhost';
 const user = process.env.MYSQLUSER || 'root';
 const password = process.env.MYSQLPASSWORD;
 const database = process.env.MYSQLDATABSE || "react_mysql";
-const port = process.env.MYSQLPORT || 3307;
+// const port = process.env.MYSQLPORT || 3307;
 
 let connection = mysql.createConnection({
     host: host,
     user: user,
     password: password,
-    database: port,
+    database: database,
 })
 
 connection.connect();
