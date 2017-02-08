@@ -17,7 +17,8 @@ let connection = mysql.createConnection({
     user: user,
     password: password,
     database: database,
-    port: port,
+    port: 5432,
+    url: "postgres://ywkiibqjxgqnlx:20cd06be922c2e1356434831584a3730ccbcd5015f8143aade40bcd79bcb089b@ec2-54-225-230-243.compute-1.amazonaws.com:5432/d2at5n7ddcqc4o"
 })
 
 connection.connect();
