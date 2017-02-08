@@ -1,5 +1,5 @@
-const constants = require('../../../../constants');
-constants.setupGlobals();
+// const constants = require('../../../../constants');
+// constants.setupGlobals();
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
@@ -13,10 +13,10 @@ const database = process.env.MYSQLDATABSE || "react_mysql";
 const port = process.env.MYSQLPORT || 3307;
 
 let connection = mysql.createConnection({
-    host: host,
-    user: user,
-    password: password,
-    database: database,
+    host: 'localhost',
+    user: 'root',
+    password: '0605198922071958@Chelseafc',
+    database: "react_mysql",
 })
 
 connection.connect();
@@ -139,8 +139,10 @@ router.use((req, res, next) => {
                 message: 'Invalid Token'
             })
         }
-        req.id = decoded.id;
-        req.username = decoded.username;
+        if (decoded != undefined) {
+            req.id = decoded.id;
+            req.username = decoded.username;
+        }
         next();
     })
 })
@@ -174,6 +176,7 @@ router.route('/blog').post((req, res) => {
 })
 
 router.route('/blogged').put((req, res) => {
+
     if (req.id) {
         let query = connection.query("UPDATE blog SET title = ?, content = ? WHERE id= ? ", [req.body.title, req.body.content, req.body.id], (error, result) => {
             console.log(query.sql);

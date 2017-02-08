@@ -20,6 +20,7 @@ const api = require('./router/api/authentication');
 const vue = require('./router/api/VueAPI/VueAPI');
 const blog = require('./router/api/ReactBlog/index');
 const mysqlBlog = require('./router/api/MysqlAPI/ReactBlog/index');
+const p5 = require('./router/p5/routes/index');
 
 const app = express();
 
@@ -57,9 +58,13 @@ app.use('/api', api);
 app.use('/blog', blog);
 app.use('/vue', vue); 
 app.use('/mysql', mysqlBlog)
+app.use('/p5', p5);
+// app.use("*", (req, res) => {
+//     res.redirect('back');
+// })
 
 
-server.listen(process.env.PORT || 4000, () => {
+server.listen(process.env.PORT || 5000, () => {
     console.log(`Listening to port ${port}`);
 })
 
