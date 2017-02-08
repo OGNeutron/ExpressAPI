@@ -10,12 +10,14 @@ const host = process.env.MYSQLHOST ||'localhost';
 const user = process.env.MYSQLUSER || 'root';
 const password = process.env.MYSQLPASSWORD || '0605198922071958@Chelseafc';
 const database = process.env.MYSQLDATABASE || "react_mysql";
+const port = process.env.MYSQLPORT || 3307;
 
 let connection = mysql.createConnection({
-    host: "ec2-54-225-230-243.compute-1.amazonaws.com",
-    user: "ywkiibqjxgqnlx",
-    password: "20cd06be922c2e1356434831584a3730ccbcd5015f8143aade40bcd79bcb089b",
-    database: "d2at5n7ddcqc4o"
+    host: host,
+    user: user,
+    password: password,
+    database: database,
+    port: port,
 })
 
 connection.connect();
