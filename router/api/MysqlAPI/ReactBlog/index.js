@@ -4,14 +4,14 @@ const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt-nodejs');
 
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '0605198922071958@Chelseafc',
-    database: 'react_mysql'
-})
+// let connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '0605198922071958@Chelseafc',
+//     database: 'react_mysql'
+// })
 
-connection.connect();
+// connection.connect();
 
 router.route('/signup').post((req, res) => {
     let username = req.body.username;
