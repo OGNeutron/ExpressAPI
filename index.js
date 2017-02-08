@@ -59,7 +59,7 @@ app.use('/vue', vue);
 app.use('/mysql', mysqlBlog)
 
 
-server.listen(port, () => {
+server.listen(process.env.PORT || 4000, () => {
     console.log(`Listening to port ${port}`);
 })
 
