@@ -13,12 +13,10 @@ const database = process.env.MYSQLDATABASE || "react_mysql";
 const port = process.env.MYSQLPORT || 3307;
 
 let connection = mysql.createConnection({
-    host: host,
-    user: user,
-    password: password,
-    database: database,
-    port: 5432,
-    url: "postgres://ywkiibqjxgqnlx:20cd06be922c2e1356434831584a3730ccbcd5015f8143aade40bcd79bcb089b@ec2-54-225-230-243.compute-1.amazonaws.com:5432/d2at5n7ddcqc4o"
+    host: "us-cdbr-iron-east-04.cleardb.net",
+    user: "b8b3fa538c3fdb",
+    password: "259ac16c",
+    database: "heroku_ddf5f57e722347d",
 })
 
 connection.connect();
