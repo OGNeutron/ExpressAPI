@@ -13,10 +13,10 @@ const database = process.env.MYSQLDATABSE || "react_mysql";
 // const port = process.env.MYSQLPORT || 3307;
 
 let connection = mysql.createConnection({
-    host: host,
-    user: user,
-    password: password,
-    database: database,
+    host: host,//'localhost',
+    user: user,//'root',
+    password: password,//"0605198922071958@Chelseafc",
+    database: databse,//"react_mysql",
 })
 
 connection.connect();
@@ -113,9 +113,6 @@ router.route('/blog').get((req, res) => {
 
 router.route('/blogged/:id').get((req, res) => {
     console.log(req.params.id);
-    if (req.params.id === Number) {
-
-    }
     let query = connection.query('SELECT * FROM blog WHERE id=' + connection.escape(req.params.id), (error, result) => {
         console.log(query.sql);
         if (error) {
@@ -131,6 +128,12 @@ router.route('/blogged/:id').get((req, res) => {
 })
 
 router.use((req, res, next) => {
+
+    if(!req.headers['auth-token']){
+        res.status(500).json({
+            message: 'No Token Or Invalid Token'
+        })
+    }
     let token = req.headers['auth-token'];
     jwt.verify(token, process.env.SECRET, (err, decoded) => {
         if (err) {
@@ -211,11 +214,11 @@ router.route('/comment').get((req, res) => {
     let query = connection.query("SELECT * FROM comment WHERE blog_id=" + req.query.blog, (err, result) => {
         console.log(query.sql);
         if (err) {
-            res.status(404).json({
+            res.json({
                 err
             })
         } else {
-            res.status(200).json({
+            res.json({
                 result
             })
         }
@@ -243,10 +246,53 @@ router.route('/comment').get((req, res) => {
 })
 
 router.route('/reply').post((req, res) => {
-
+    console.log(req.body);
+    let query = connection.query("INSERT INTO comment_replies SET reply = ?, comment_id = ?, user_id = ?", [req.body.reply, req.body.comment_id, req.id], (err, result) => {
+        console.log(query.sql);
+        if (err) {
+            res.status(404).json({
+                err
+            });
+        } else {
+            res.status(201).json({
+                result
+            })
+        }
+    })
 })
 
-router.route('/rate').post((req, res) => {
+router.route('/rate').put((req, res) => {
+
+    console.log(req.body);
+
+    if (req.body.plus) {
+        let query = connection.query("UPDATE comment SET plus = plus + 1 WHERE id = ?", [req.body.comment_id], (err, result) => {
+            console.error(err);
+            if (err) {
+                res.status(401).json({
+                    err
+                })
+            } else {
+                res.status(201).json({
+                    result
+                })
+            }
+        })
+    } else if (req.body.negative) {
+        let query = connection.query("UPDATE comment SET negative = negative + 1 WHERE id = ?", [req.body.comment_id], (err, result) => {
+            console.error(err);
+            if (err) {
+                res.status(401).json({
+                    err
+                })
+            } else {
+                res.status(201).json({
+                    result
+                })
+            }
+        })
+    }
+
 
 })
 

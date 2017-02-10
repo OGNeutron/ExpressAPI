@@ -1,16 +1,15 @@
-{{#each examples as |example|}}
-<div class="col-md-4 col-xs-12 col-sm-12">
-    <div class="panel panel-default">
+<div class="p5-container">
+    {{#each examples as |example|}}
+    <div class="p5-panel panel panel-default">
         <div class="panel panel-heading">
             {{example.title}}
         </div>
-        <div class="panel-body">
+        <div class="p5-panel-body panel-body">
             {{this.description}}
         </div>
         <div class="panel-footer">
             <a href="/p5/sketch/{{example.id}}" class="btn btn-default">View</a>
         </div>
     </div>
+    {{/each}}
 </div>
-{{/each}}
-

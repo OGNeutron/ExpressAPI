@@ -1,0 +1,17 @@
+.p5-container {
+    display:flex;   
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.p5-panel {
+    width:30%;
+    flex-grow: 1;
+    margin:1rem 1rem;
+}
+
+.p5-panel-body {
+    overflow: hidden;
+    height:150px;
+}

@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const validator = require('express-validator');
 const exphbs = require('express-handlebars');
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 const flash = require('connect-flash');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -64,7 +64,7 @@ app.use('/p5', p5);
 // })
 
 
-server.listen(process.env.PORT || 5000, () => {
+server.listen(process.env.PORT || 4000, () => {
     console.log(`Listening to port ${port}`);
 })
 
