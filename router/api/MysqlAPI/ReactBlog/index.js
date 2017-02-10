@@ -16,7 +16,7 @@ let connection = mysql.createConnection({
     host: host,//'localhost',
     user: user,//'root',
     password: password,//"0605198922071958@Chelseafc",
-    database: databse,//"react_mysql",
+    database: database,//"react_mysql",
 })
 
 connection.connect();
